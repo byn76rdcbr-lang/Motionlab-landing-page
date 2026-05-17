@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Motion.Lab Fitness &amp; Lifestyle — Pilates, Lutas, Personal Training. Conheça nossas modalidades e planos para 2026." name="description"/>
+<title>Motion.Lab — Fitness &amp; Lifestyle</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&amp;family=Barlow+Condensed:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a0a;--dark:#111;--card:#181818;--border:#252525;--border2:#333;--yellow:#d4f000;--yellow2:#b8d400;--white:#f0f0f0;--muted:#777;--muted2:#555;--green:#4ade80;--red:#f87171;--purple:#c084fc;--blue:#67e8f9}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--yellow)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:62px;transition:border-color .3s}
+nav.scrolled{border-color:var(--yellow)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:3px;color:var(--white);text-decoration:none;line-height:1}
+.nav-logo span{color:var(--yellow)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;cursor:pointer}
+.nav-links a:hover{color:var(--yellow)}
+.nav-cta{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;padding:9px 22px;background:var(--yellow);color:var(--black);border:none;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background .2s,transform .15s;text-decoration:none}
+.nav-cta:hover{background:var(--yellow2);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--dark);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:40px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;color:var(--white);text-decoration:none;transition:color .2s;cursor:pointer}
+.mobile-menu a:hover{color:var(--yellow)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 6vw 60px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(212,240,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(212,240,0,.04) 1px,transparent 1px);background-size:60px 60px;animation:gridShift 20s linear infinite}
+@keyframes gridShift{from{background-position:0 0}to{background-position:60px 60px}}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(212,240,0,.12) 0%,transparent 70%);pointer-events:none;animation:glowPulse 6s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.15);opacity:1}}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--yellow);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:block;width:30px;height:2px;background:var(--yellow)}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,7vw,6rem);line-height:.95;letter-spacing:2px;color:var(--white);animation:fadeUp .8s ease both}
+.hero-title em{font-style:normal;color:var(--yellow);display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-desc{margin-top:24px;font-size:1.05rem;color:var(--muted);line-height:1.7;font-weight:300;animation:fadeUp .8s .15s ease both}
+.hero-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .8s .25s ease both}
+.btn-primary{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;background:var(--yellow);color:var(--black);border:none;cursor:pointer;text-decoration:none;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--yellow2);transform:translateY(-2px)}
+.btn-outline{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:2px;text-transform:uppercase;padding:13px 32px;background:transparent;color:var(--white);border:1.5px solid var(--border2);cursor:pointer;text-decoration:none;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:border-color .2s,color .2s,transform .15s;display:inline-block}
+.btn-outline:hover{border-color:var(--yellow);color:var(--yellow);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:32px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);animation:fadeUp .8s .35s ease both}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--yellow);line-height:1}
+.stat-label{font-size:.72rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+.hero-visual{display:grid;grid-template-columns:1fr 1fr;gap:12px;animation:fadeUp .8s .2s ease both}
+.modality-card{background:var(--card);border:1px solid var(--border);padding:20px 18px;transition:border-color .25s,transform .2s;position:relative;overflow:hidden}
+.modality-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--yellow);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.modality-card:hover{border-color:var(--yellow);transform:translateY(-4px)}
+.modality-card:hover::after{transform:scaleX(1)}
+.modality-card:nth-child(2),.modality-card:nth-child(4){margin-top:24px}
+.mc-icon{font-size:1.6rem;margin-bottom:10px}
+.mc-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:2px;text-transform:uppercase;color:var(--white)}
+.mc-desc{font-size:.72rem;color:var(--muted);margin-top:4px;line-height:1.4}
+.diferenciais{padding:90px 6vw;background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.section-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:5px;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3rem);letter-spacing:2px;color:var(--white);margin-bottom:48px}
+.section-title span{color:var(--yellow)}
+.diff-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px}
+.diff-item{background:var(--card);padding:32px 28px;border:1px solid var(--border);position:relative;overflow:hidden;transition:border-color .25s}
+.diff-item:hover{border-color:var(--yellow)}
+.diff-number{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(212,240,0,.08);position:absolute;top:10px;right:16px;line-height:1;pointer-events:none}
+.diff-icon{width:40px;height:40px;background:rgba(212,240,0,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:16px}
+.diff-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:8px}
+.diff-text{font-size:.82rem;color:var(--muted);line-height:1.6}
+.modalidades{padding:90px 6vw}
+.mod-tabs{max-width:1200px;margin:0 auto 40px;display:flex;flex-wrap:wrap;gap:8px}
+.mod-tab{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;padding:9px 20px;border:1.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);transition:all .2s}
+.mod-tab:hover{border-color:var(--yellow);color:var(--yellow)}
+.mod-tab.active{background:var(--yellow);color:var(--black);border-color:var(--yellow)}
+.cards-wrap{max-width:1200px;margin:0 auto}
+.payment-row{display:flex;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.payment-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.payment-label.active{color:var(--yellow)}
+.toggle-switch{width:52px;height:26px;background:var(--border);border-radius:13px;position:relative;cursor:pointer;border:1.5px solid var(--yellow);transition:background .2s}
+.toggle-knob{width:18px;height:18px;background:var(--yellow);border-radius:50%;position:absolute;top:3px;left:3px;transition:transform .25s}
+.toggle-switch.credit .toggle-knob{transform:translateX(26px)}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.plan-card{background:var(--card);border:1.5px solid var(--border);position:relative;overflow:hidden;transition:border-color .25s,transform .2s;animation:fadeUp .35s ease both}
+.plan-card:hover{border-color:var(--yellow);transform:translateY(-3px)}
+.plan-card.promo{border-color:rgba(212,240,0,.25)}
+.plan-card.hidden{display:none}
+.promo-ribbon{position:absolute;top:14px;right:-26px;background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.6rem;letter-spacing:2px;padding:3px 36px;transform:rotate(45deg);pointer-events:none}
+.card-header{padding:18px 20px 14px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.card-title{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;letter-spacing:2px;color:var(--white);line-height:1.1}
+.card-sub{font-size:.7rem;color:var(--yellow);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;font-weight:600}
+.cat-badge{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 9px;border:1px solid;white-space:nowrap;flex-shrink:0}
+.b-pilates{border-color:var(--purple);color:var(--purple)}
+.b-luta{border-color:var(--red);color:var(--red)}
+.b-combo{border-color:var(--yellow);color:var(--yellow)}
+.b-personal{border-color:var(--blue);color:var(--blue)}
+.card-sched{padding:8px 20px;background:#141414;font-size:.7rem;color:var(--muted);border-bottom:1px solid var(--border);line-height:1.4}
+.card-sched strong{color:var(--white)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid var(--border)}
+.price-grid.cols3{grid-template-columns:1fr 1fr 1fr}
+.price-cell{padding:13px 8px;text-align:center;border-right:1px solid var(--border)}
+.price-cell:last-child{border-right:none}
+.price-cell.best{background:rgba(212,240,0,.05)}
+.price-period{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.price-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;line-height:1}
+.price-val.best-val{color:var(--yellow)}
+.price-inst{font-size:.6rem;color:var(--muted);margin-top:2px}
+.price-saving{display:inline-block;margin-top:3px;font-size:.58rem;font-weight:700;letter-spacing:.5px;padding:1px 5px;background:rgba(74,222,128,.12);color:var(--green);border-radius:2px}
+.pilates-freq{border-top:1px solid var(--border)}
+.freq-label{padding:5px 20px;background:#141414;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);border-bottom:1px solid var(--border)}
+.card-footer{padding:10px 20px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag{font-size:.62rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:3px 8px;background:rgba(255,255,255,.04);color:var(--muted);border-radius:2px}
+.tag.hl{background:rgba(212,240,0,.08);color:var(--yellow)}
+.tag.avulsa{background:transparent;color:var(--white);border:1.5px solid var(--yellow);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:1px;padding:4px 10px;border-radius:0;position:relative}
+.tag.avulsa::before{content:'⚡ ';color:var(--yellow)}
+.tag.avaliacao{background:rgba(192,132,252,.12);color:#e9d5ff;border:1.5px solid #c084fc;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:1px;padding:5px 12px;border-radius:0}
+.tag.avaliacao::before{content:'📋 ';font-size:.8rem}
+.section-divider{grid-column:1/-1;display:flex;align-items:center;gap:14px;margin:8px 0 4px}
+.sd-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:4px;color:var(--muted);white-space:nowrap;text-transform:uppercase}
+.sd-line{flex:1;height:1px;background:var(--border)}
+.horarios{padding:90px 6vw;background:var(--dark);border-top:1px solid var(--border)}
+.schedule-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px}
+.day-col{background:var(--card);border:1px solid var(--border)}
+.day-header{padding:12px 16px;background:#141414;border-bottom:2px solid var(--yellow);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;color:var(--yellow)}
+.day-items{padding:8px 0}
+.day-item{padding:8px 16px;border-bottom:1px solid rgba(255,255,255,.04);display:flex;flex-direction:column;gap:2px}
+.day-item:last-child{border-bottom:none}
+.di-time{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;color:var(--yellow);letter-spacing:1px}
+.di-name{font-size:.78rem;color:var(--white);font-weight:500}
+.di-note{font-size:.65rem;color:var(--muted)}
+.cta-section{padding:100px 6vw;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(212,240,0,.06) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:3px;color:var(--white);line-height:.95;margin-bottom:20px}
+.cta-title span{color:var(--yellow);display:block}
+.cta-desc{font-size:1rem;color:var(--muted);line-height:1.7;margin-bottom:40px}
+.contact-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:40px}
+.contact-chip{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);padding:12px 20px;font-size:.85rem;font-weight:500;color:var(--white);text-decoration:none;transition:border-color .2s,transform .15s}
+.contact-chip:hover{border-color:var(--yellow);transform:translateY(-2px)}
+.contact-chip-icon{font-size:1.1rem}
+.cta-note{font-size:.75rem;color:var(--muted2);margin-top:20px}
+footer{background:var(--dark);border-top:1px solid var(--border);padding:40px 6vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px;color:var(--white)}
+.footer-logo span{color:var(--yellow)}
+.footer-copy{font-size:.72rem;color:var(--muted)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.72rem;color:var(--muted);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color .2s;cursor:pointer}
+.footer-links a:hover{color:var(--yellow)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:50px}.hero-visual{order:-1}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}}
+@media(max-width:600px){.hero{padding:90px 5vw 50px}.diferenciais,.modalidades,.horarios,.cta-section{padding:60px 5vw}.hero-stats{gap:20px}.cards-grid{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}.footer-links{flex-wrap:wrap;justify-content:center}}
+</style>
+</head>
+<body>
+<nav id="navbar">
+<a class="nav-logo" href="#">MOTION<span>.</span>LAB</a>
+<ul class="nav-links">
+<li><a onclick="goTo('diferenciais')">Diferenciais</a></li>
+<li><a onclick="goTo('modalidades')">Modalidades</a></li>
+<li><a onclick="goTo('horarios')">Horários</a></li>
+<li><a onclick="goTo('precos')">Planos</a></li>
+<li><a onclick="goTo('contato')">Contato</a></li>
+</ul>
+<a class="nav-cta" onclick="goTo('contato')">Matricule-se</a>
+<button aria-label="Menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a class="mob-link" onclick="goTo('diferenciais');closeMob()">Diferenciais</a>
+<a class="mob-link" onclick="goTo('modalidades');closeMob()">Modalidades</a>
+<a class="mob-link" onclick="goTo('horarios');closeMob()">Horários</a>
+<a class="mob-link" onclick="goTo('precos');closeMob()">Planos</a>
+<a class="mob-link" onclick="goTo('contato');closeMob()">Contato</a>
+</div>
+<section class="hero">
+<div class="hero-grid"></div>
+<div class="hero-glow"></div>
+<div class="hero-inner">
+<div class="hero-content">
+<div class="hero-eyebrow">Fitness &amp; Lifestyle · 2026</div>
+<h1 class="hero-title">TRANSFORME<br/>SEU <em>CORPO E<br/>MENTE</em></h1>
+<p class="hero-desc">Pilates clínico, artes marciais e personal training com profissionais qualificados. Turmas reduzidas, método eficiente e resultados reais.</p>
+<div class="hero-actions">
+<a class="btn-primary" onclick="goTo('modalidades')">Ver Planos &amp; Preços</a>
+<a class="btn-outline" onclick="goTo('contato')">Falar Conosco</a>
+</div>
+<div class="hero-stats">
+<div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Modalidades</div></div>
+<div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Alunos/turma no Pilates</div></div>
+<div class="stat-item"><div class="stat-num">10</div><div class="stat-label">Alunos/turma nas lutas</div></div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="modality-card"><div class="mc-icon">🧘</div><div class="mc-name">Pilates</div><div class="mc-desc">Cuide do seu corpo com quem realmente entende dele. Aulas guiadas por fisioterapeuta, em turmas pequenas e no seu ritmo.</div></div>
+<div class="modality-card"><div class="mc-icon">🥊</div><div class="mc-name">Boxe &amp; Muay Thai</div><div class="mc-desc">Libere o estresse, ganhe confiança e aprenda a se defender. Duas artes marciais que transformam corpo e mente.</div></div>
+<div class="modality-card"><div class="mc-icon">🥋</div><div class="mc-name">Jiu Jitsu &amp; Judô</div><div class="mc-desc">Disciplina, estratégia e superação no tatame. Do kimono ao No Gi, desenvolva técnica real com quem vive o esporte.</div></div>
+<div class="modality-card"><div class="mc-icon">⚡</div><div class="mc-name">Personal Training</div><div class="mc-desc">Treino feito para você, do jeito certo. Acompanhamento individualizado + Boxe, MMA e Muay Thai inclusos no plano.</div></div>
+</div>
+</div>
+</section>
+<section class="diferenciais" id="diferenciais">
+<div style="max-width:1200px;margin:0 auto">
+<div class="section-label reveal">Por que a Motion.Lab?</div>
+<h2 class="section-title reveal">NOSSOS <span>DIFERENCIAIS</span></h2>
+<div class="diff-grid">
+<div class="diff-item reveal"><div class="diff-number">01</div><div class="diff-icon">🏅</div><div class="diff-title">Profissionais Certificados</div><div class="diff-text">Pilates ministrado por Fisioterapeuta com CREFITO ativo. Lutas com instrutores experientes e titulados.</div></div>
+<div class="diff-item reveal"><div class="diff-number">02</div><div class="diff-icon">👥</div><div class="diff-title">Turmas Reduzidas</div><div class="diff-text">Máximo de 3 alunos por horário no Pilates. Atenção individualizada e evolução mais rápida e segura.</div></div>
+<div class="diff-item reveal"><div class="diff-number">03</div><div class="diff-icon">📅</div><div class="diff-title">Flexibilidade de Horários</div><div class="diff-text">Pilates de segunda a sexta, das 7h às 11h e das 16h às 19h. Lutas com grades noturnas e aos sábados.</div></div>
+<div class="diff-item reveal"><div class="diff-number">04</div><div class="diff-icon">💰</div><div class="diff-title">Planos Acessíveis</div><div class="diff-text">Do mensal ao anual, com até 22% de desconto. Combos especiais que unem Pilates + Lutas por um preço justo.</div></div>
+<div class="diff-item reveal"><div class="diff-number">05</div><div class="diff-icon">🌟</div><div class="diff-title">Open Mat Incluso</div><div class="diff-text">Todo plano de lutas inclui o Open Mat de sábado às 12h — treino livre para consolidar técnicas.</div></div>
+<div class="diff-item reveal"><div class="diff-number">06</div><div class="diff-icon">🔄</div><div class="diff-title">Reposição de Aulas</div><div class="diff-text">Personal Training com reposição garantida das aulas perdidas. Sua evolução não para por imprevistos.</div></div>
+</div>
+</div>
+</section>
+<section class="modalidades" id="modalidades">
+<div style="max-width:1200px;margin:0 auto">
+<div class="section-label reveal">O que oferecemos</div>
+<h2 class="section-title reveal">NOSSAS <span>MODALIDADES</span></h2>
+<div class="mod-tabs reveal" id="modTabs">
+<button class="mod-tab active" data-filter="all">Todas</button>
+<button class="mod-tab" data-filter="pilates">Pilates</button>
+<button class="mod-tab" data-filter="lutas">Lutas</button>
+<button class="mod-tab" data-filter="combo">Combos</button>
+<button class="mod-tab" data-filter="personal">Personal</button>
+</div>
+</div>
+</section>
+<section id="precos" style="padding:40px 6vw 90px">
+<div class="cards-wrap">
+<div class="payment-row">
+<span class="payment-label active" id="lbl-pix">Dinheiro / Pix</span>
+<div aria-checked="false" class="toggle-switch" id="toggleSwitch" onclick="togglePayment()" role="switch" tabindex="0"><div class="toggle-knob"></div></div>
+<span class="payment-label" id="lbl-credit">Cartão de Crédito</span>
+</div>
+<div class="cards-grid" id="cardsGrid">
+<div class="section-divider" data-category="pilates"><span class="sd-label">Pilates</span><div class="sd-line"></div></div>
+<div class="plan-card" data-category="pilates" style="grid-column:1/-1;max-width:720px">
+<div class="card-header"><div><div class="card-title">Pilates</div><div class="card-sub">Turmas reduzidas · máx 3 alunos · 50 min · Fisioterapeuta c/ CREFITO</div></div><span class="cat-badge b-pilates">Pilates</span></div>
+<div class="card-sched"><strong>Horário:</strong> Seg a Sex, 07h–11h  |  16h–19h</div>
+<div class="pilates-freq"><div class="freq-label">1× por semana</div>
+<div class="price-grid">
+<div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$355</div><div class="price-val credit-v" style="display:none">R$373</div><div class="price-inst">1×</div></div>
+<div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$335</div><div class="price-val credit-v" style="display:none">R$345</div><div class="price-inst">3×</div><div class="price-saving pix-v">−5,6%</div><div class="price-saving credit-v" style="display:none">−7,5%</div></div>
+<div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$320</div><div class="price-val credit-v" style="display:none">R$330</div><div class="price-inst">6×</div><div class="price-saving pix-v">−9,9%</div><div class="price-saving credit-v" style="display:none">−11,5%</div></div>
+<div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$304</div><div class="price-val best-val credit-v" style="display:none">R$318</div><div class="price-inst">12×</div><div class="price-saving pix-v">−14,4%</div><div class="price-saving credit-v" style="display:none">−14,7%</div></div>
+</div>
+</div>
+<div class="pilates-freq"><div class="freq-label">2× por semana</div>
+<div class="price-grid">
+<div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$455</div><div class="price-val credit-v" style="display:none">R$478</div><div class="price-inst">1×</div></div>
+<div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$435</div><div class="price-val credit-v" style="display:none">R$450</div><div class="price-inst">3×</div><div class="price-saving pix-v">−4,4%</div><div class="price-saving credit-v" style="display:none">−5,9%</div></div>
+<div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$420</div><div class="price-val credit-v" style="display:none">R$435</div><div class="price-inst">6×</div><div class="price-saving pix-v">−7,7%</div><div class="price-saving credit-v" style="display:none">−9,0%</div></div>
+<div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$399</div><div class="price-val best-val credit-v" style="display:none">R$417</div><div class="price-inst">12×</div><div class="price-saving pix-v">−12,3%</div><div class="price-saving credit-v" style="display:none">−12,8%</div></div>
+</div>
+</div>
+<div class="pilates-freq"><div class="freq-label">3× por semana</div>
+<div class="price-grid">
+<div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$555</div><div class="price-val credit-v" style="display:none">R$583</div><div class="price-inst">1×</div></div>
+<div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$535</div><div class="price-val credit-v" style="display:none">R$555</div><div class="price-inst">3×</div><div class="price-saving pix-v">−3,6%</div><div class="price-saving credit-v" style="display:none">−4,8%</div></div>
+<div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$520</div><div class="price-val credit-v" style="display:none">R$540</div><div class="price-inst">6×</div><div class="price-saving pix-v">−6,3%</div><div class="price-saving credit-v" style="display:none">−7,4%</div></div>
+<div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$494</div><div class="price-val best-val credit-v" style="display:none">R$516</div><div class="price-inst">12×</div><div class="price-saving pix-v">−11%</div><div class="price-saving credit-v" style="display:none">−11,5%</div></div>
+</div>
+</div>
+<div class="card-footer"><span class="tag hl">Fisioterapeuta c/ CREFITO</span><span class="tag avaliacao">Avaliação Fisioterapêutica: R$180</span><span class="tag avulsa">Aula Avulsa: R$100</span></div>
+</div>
+<div class="section-divider" data-category="lutas"><span class="sd-label">Lutas Individuais</span><div class="sd-line"></div></div>
+<div class="plan-card" data-category="lutas"><div class="card-header"><div><div class="card-title">MMA</div><div class="card-sub">Exp. prévia obrigatória · 1 hora</div></div><span class="cat-badge b-luta">Luta</span></div><div class="card-sched"><strong>Horário:</strong> Seg, Qua e Sex · 19h</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$285</div><div class="price-val credit-v" style="display:none">R$299</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$265</div><div class="price-val credit-v" style="display:none">R$278</div><div class="price-inst">3×</div><div class="price-saving pix-v">−7%</div><div class="price-saving credit-v" style="display:none">−7%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$250</div><div class="price-val credit-v" style="display:none">R$263</div><div class="price-inst">6×</div><div class="price-saving pix-v">−12,3%</div><div class="price-saving credit-v" style="display:none">−12%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$225</div><div class="price-val best-val credit-v" style="display:none">R$237</div><div class="price-inst">12×</div><div class="price-saving pix-v">−21%</div><div class="price-saving credit-v" style="display:none">−20,7%</div></div></div><div class="card-footer"><span class="tag hl">Open Mat incluso</span><span class="tag">Exp. prévia</span><span class="tag avulsa">Aula Avulsa: R$70</span></div></div>
+<div class="plan-card" data-category="lutas"><div class="card-header"><div><div class="card-title">Boxe</div><div class="card-sub">Material próprio obrigatório · 1 hora</div></div><span class="cat-badge b-luta">Luta</span></div><div class="card-sched"><strong>Horário:</strong> Ter, Qui e Sex · 19h</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$285</div><div class="price-val credit-v" style="display:none">R$299</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$265</div><div class="price-val credit-v" style="display:none">R$278</div><div class="price-inst">3×</div><div class="price-saving pix-v">−7%</div><div class="price-saving credit-v" style="display:none">−7%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$250</div><div class="price-val credit-v" style="display:none">R$263</div><div class="price-inst">6×</div><div class="price-saving pix-v">−12,3%</div><div class="price-saving credit-v" style="display:none">−12%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$225</div><div class="price-val best-val credit-v" style="display:none">R$237</div><div class="price-inst">12×</div><div class="price-saving pix-v">−21%</div><div class="price-saving credit-v" style="display:none">−20,7%</div></div></div><div class="card-footer"><span class="tag hl">Open Mat incluso</span><span class="tag">Material próprio</span><span class="tag avulsa">Aula Avulsa: R$70</span></div></div>
+<div class="plan-card" data-category="lutas"><div class="card-header"><div><div class="card-title">Muay Thai</div><div class="card-sub">Material próprio obrigatório · 1 hora</div></div><span class="cat-badge b-luta">Luta</span></div><div class="card-sched"><strong>Horário:</strong> Seg, Qua e Sex · 18h</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$285</div><div class="price-val credit-v" style="display:none">R$299</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$265</div><div class="price-val credit-v" style="display:none">R$278</div><div class="price-inst">3×</div><div class="price-saving pix-v">−7%</div><div class="price-saving credit-v" style="display:none">−7%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$250</div><div class="price-val credit-v" style="display:none">R$263</div><div class="price-inst">6×</div><div class="price-saving pix-v">−12,3%</div><div class="price-saving credit-v" style="display:none">−12%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$225</div><div class="price-val best-val credit-v" style="display:none">R$237</div><div class="price-inst">12×</div><div class="price-saving pix-v">−21%</div><div class="price-saving credit-v" style="display:none">−20,7%</div></div></div><div class="card-footer"><span class="tag hl">Open Mat incluso</span><span class="tag">Material próprio</span><span class="tag avulsa">Aula Avulsa: R$70</span></div></div>
+<div class="plan-card" data-category="lutas"><div class="card-header"><div><div class="card-title">Judô</div><div class="card-sub">Material próprio obrigatório · 1 hora</div></div><span class="cat-badge b-luta">Luta</span></div><div class="card-sched"><strong>Horário:</strong> Ter, Qui e Sex · 16h</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$370</div><div class="price-val credit-v" style="display:none">R$388</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$350</div><div class="price-val credit-v" style="display:none">R$368</div><div class="price-inst">3×</div><div class="price-saving pix-v">−5,4%</div><div class="price-saving credit-v" style="display:none">−5,2%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$315</div><div class="price-val credit-v" style="display:none">R$330</div><div class="price-inst">6×</div><div class="price-saving pix-v">−14,9%</div><div class="price-saving credit-v" style="display:none">−14,9%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$297</div><div class="price-val best-val credit-v" style="display:none">R$312</div><div class="price-inst">12×</div><div class="price-saving pix-v">−19,7%</div><div class="price-saving credit-v" style="display:none">−19,6%</div></div></div><div class="card-footer"><span class="tag hl">Open Mat incluso</span><span class="tag">Material próprio</span><span class="tag avulsa">Aula Avulsa: R$85</span></div></div>
+<div class="plan-card" data-category="lutas"><div class="card-header"><div><div class="card-title">Jiu Jitsu</div><div class="card-sub">Kimono · material próprio · 1 hora</div></div><span class="cat-badge b-luta">Luta</span></div><div class="card-sched"><strong>Horário:</strong> Seg, Qua e Sex · 20h</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$400</div><div class="price-val credit-v" style="display:none">R$420</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$380</div><div class="price-val credit-v" style="display:none">R$399</div><div class="price-inst">3×</div><div class="price-saving pix-v">−5%</div><div class="price-saving credit-v" style="display:none">−5%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$342</div><div class="price-val credit-v" style="display:none">R$359</div><div class="price-inst">6×</div><div class="price-saving pix-v">−14,5%</div><div class="price-saving credit-v" style="display:none">−14,5%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$332</div><div class="price-val best-val credit-v" style="display:none">R$348</div><div class="price-inst">12×</div><div class="price-saving pix-v">−17%</div><div class="price-saving credit-v" style="display:none">−17,1%</div></div></div><div class="card-footer"><span class="tag hl">Open Mat incluso</span><span class="tag">Material próprio</span><span class="tag avulsa">Aula Avulsa: R$100</span></div></div>
+<div class="plan-card" data-category="lutas"><div class="card-header"><div><div class="card-title">Open Mat</div><div class="card-sub">Incluso em TODOS os planos de lutas</div></div><span class="cat-badge b-luta">Luta</span></div><div class="card-sched"><strong>Horário:</strong> Sábado · 12h</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$210</div><div class="price-val credit-v" style="display:none">R$220</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$190</div><div class="price-val credit-v" style="display:none">R$200</div><div class="price-inst">3×</div><div class="price-saving pix-v">−9,5%</div><div class="price-saving credit-v" style="display:none">−9%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$171</div><div class="price-val credit-v" style="display:none">R$180</div><div class="price-inst">6×</div><div class="price-saving pix-v">−18,6%</div><div class="price-saving credit-v" style="display:none">−18,2%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$162</div><div class="price-val best-val credit-v" style="display:none">R$170</div><div class="price-inst">12×</div><div class="price-saving pix-v">−22,9%</div><div class="price-saving credit-v" style="display:none">−22,7%</div></div></div><div class="card-footer"><span class="tag hl">Já incluso nos planos de lutas</span><span class="tag avulsa">Aula Avulsa: R$70</span></div></div>
+<div class="section-divider" data-category="combo"><span class="sd-label">Pacotes Combo</span><div class="sd-line"></div></div>
+<div class="plan-card promo" data-category="combo"><div class="promo-ribbon">PROMOÇÃO</div><div class="card-header"><div><div class="card-title">Pilates + Boxe ou Muay Thai</div><div class="card-sub">1× Pilates/semana · 3× luta/semana</div></div><span class="cat-badge b-combo">Combo</span></div><div class="card-sched"><strong>Pilates:</strong> Seg–Sex  |  <strong>Luta:</strong> conforme grade</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$420</div><div class="price-val credit-v" style="display:none">R$441</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$400</div><div class="price-val credit-v" style="display:none">R$420</div><div class="price-inst">3×</div><div class="price-saving pix-v">−4,8%</div><div class="price-saving credit-v" style="display:none">−4,8%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$385</div><div class="price-val credit-v" style="display:none">R$405</div><div class="price-inst">6×</div><div class="price-saving pix-v">−8,3%</div><div class="price-saving credit-v" style="display:none">−8,2%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$347</div><div class="price-val best-val credit-v" style="display:none">R$365</div><div class="price-inst">12×</div><div class="price-saving pix-v">−17,4%</div><div class="price-saving credit-v" style="display:none">−17,2%</div></div></div><div class="card-footer"><span class="tag hl">Open Mat incluso</span></div></div>
+<div class="plan-card promo" data-category="combo"><div class="promo-ribbon">PROMOÇÃO</div><div class="card-header"><div><div class="card-title">Boxe + Muay Thai + MMA</div><div class="card-sub">Pacote striking completo</div></div><span class="cat-badge b-combo">Combo</span></div><div class="card-sched"><strong>Boxe:</strong> Ter, Qui e Sex 19h  |  <strong>MT:</strong> Seg, Qua e Sex 18h  |  <strong>MMA:</strong> Seg, Qua e Sex 19h</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$385</div><div class="price-val credit-v" style="display:none">R$404</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$365</div><div class="price-val credit-v" style="display:none">R$383</div><div class="price-inst">3×</div><div class="price-saving pix-v">−5,2%</div><div class="price-saving credit-v" style="display:none">−5,2%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$329</div><div class="price-val credit-v" style="display:none">R$346</div><div class="price-inst">6×</div><div class="price-saving pix-v">−14,5%</div><div class="price-saving credit-v" style="display:none">−14,4%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$310</div><div class="price-val best-val credit-v" style="display:none">R$326</div><div class="price-inst">12×</div><div class="price-saving pix-v">−19,5%</div><div class="price-saving credit-v" style="display:none">−19,3%</div></div></div><div class="card-footer"><span class="tag hl">Open Mat incluso</span><span class="tag">Material próprio</span></div></div>
+<div class="plan-card promo" data-category="combo"><div class="promo-ribbon">PROMOÇÃO</div><div class="card-header"><div><div class="card-title">Judô ou JJ + Boxe, MT e MMA</div><div class="card-sub">Grappling + Striking — MMA total</div></div><span class="cat-badge b-combo">Combo</span></div><div class="card-sched"><strong>Judô/JJ:</strong> conforme grade  |  <strong>Striking:</strong> conforme grade</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$470</div><div class="price-val credit-v" style="display:none">R$494</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$450</div><div class="price-val credit-v" style="display:none">R$473</div><div class="price-inst">3×</div><div class="price-saving pix-v">−4,3%</div><div class="price-saving credit-v" style="display:none">−4,3%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$405</div><div class="price-val credit-v" style="display:none">R$426</div><div class="price-inst">6×</div><div class="price-saving pix-v">−13,8%</div><div class="price-saving credit-v" style="display:none">−13,8%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$383</div><div class="price-val best-val credit-v" style="display:none">R$402</div><div class="price-inst">12×</div><div class="price-saving pix-v">−18,5%</div><div class="price-saving credit-v" style="display:none">−18,6%</div></div></div><div class="card-footer"><span class="tag hl">Open Mat incluso</span><span class="tag">Material próprio</span></div></div>
+<div class="plan-card promo" data-category="combo"><div class="promo-ribbon">PROMOÇÃO</div><div class="card-header"><div><div class="card-title">Jiu Jitsu + Judô</div><div class="card-sub">Grappling de alto nível</div></div><span class="cat-badge b-combo">Combo</span></div><div class="card-sched"><strong>JJ:</strong> Seg, Qua e Sex 20h  |  <strong>Judô:</strong> Ter, Qui e Sex 16h</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$600</div><div class="price-val credit-v" style="display:none">R$630</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$540</div><div class="price-val credit-v" style="display:none">R$567</div><div class="price-inst">3×</div><div class="price-saving pix-v">−10%</div><div class="price-saving credit-v" style="display:none">−10%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$510</div><div class="price-val credit-v" style="display:none">R$536</div><div class="price-inst">6×</div><div class="price-saving pix-v">−15%</div><div class="price-saving credit-v" style="display:none">−14,9%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$480</div><div class="price-val best-val credit-v" style="display:none">R$504</div><div class="price-inst">12×</div><div class="price-saving pix-v">−20%</div><div class="price-saving credit-v" style="display:none">−20%</div></div></div><div class="card-footer"><span class="tag hl">Open Mat incluso</span></div></div><div class="plan-card promo" data-category="combo"><div class="promo-ribbon">PROMOÇÃO</div><div class="card-header"><div><div class="card-title">Judô ou JJ + Boxe, MT e MMA</div><div class="card-sub">Grappling + Striking — MMA total</div></div><span class="cat-badge b-combo">Combo</span></div><div class="card-sched"><strong>Judô/JJ:</strong> conforme grade  |  <strong>Striking:</strong> conforme grade</div><div class="price-grid"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$470</div><div class="price-val credit-v" style="display:none">R$494</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$450</div><div class="price-val credit-v" style="display:none">R$473</div><div class="price-inst">3×</div><div class="price-saving pix-v">−4,3%</div><div class="price-saving credit-v" style="display:none">−4,3%</div></div><div class="price-cell"><div class="price-period">Semestral</div><div class="price-val pix-v">R$405</div><div class="price-val credit-v" style="display:none">R$426</div><div class="price-inst">6×</div><div class="price-saving pix-v">−13,8%</div><div class="price-saving credit-v" style="display:none">−13,8%</div></div><div class="price-cell best"><div class="price-period">Anual ★</div><div class="price-val best-val pix-v">R$383</div><div class="price-val best-val credit-v" style="display:none">R$402</div><div class="price-inst">12×</div><div class="price-saving pix-v">−18,5%</div><div class="price-saving credit-v" style="display:none">−18,6%</div></div></div><div class="card-footer"><span class="tag hl">Open Mat incluso</span><span class="tag">Material próprio</span></div></div><div class="section-divider" data-category="personal"><span class="sd-label">Personal Training</span><div class="sd-line"></div></div><div class="plan-card" data-category="personal" style="grid-column:1/-1;max-width:560px"><div class="card-header"><div><div class="card-title">Personal Training</div><div class="card-sub">1× por semana · Coletivas inclusas · Reposição de aulas</div></div><span class="cat-badge b-personal">Personal</span></div><div class="price-grid cols3"><div class="price-cell"><div class="price-period">Mensal</div><div class="price-val pix-v">R$500</div><div class="price-val credit-v" style="display:none">R$525</div><div class="price-inst">1×</div></div><div class="price-cell"><div class="price-period">Trimestral</div><div class="price-val pix-v">R$450</div><div class="price-val credit-v" style="display:none">R$472</div><div class="price-inst">3×</div><div class="price-saving pix-v">−10%</div><div class="price-saving credit-v" style="display:none">−10,1%</div></div><div class="price-cell best"><div class="price-period">Semestral ★</div><div class="price-val best-val pix-v">R$425</div><div class="price-val best-val credit-v" style="display:none">R$446</div><div class="price-inst">6×</div><div class="price-saving pix-v">−15%</div><div class="price-saving credit-v" style="display:none">−15%</div></div></div><div class="card-footer"><span class="tag hl">🥊 Coletivas inclusas: Boxe · MMA · Muay Thai</span><span class="tag">Contrato obrigatório</span><span class="tag">Reposição de aulas</span></div></div>
+</div></div></section>
+<section class="horarios" id="horarios">
+<div style="max-width:1200px;margin:0 auto">
+<div class="section-label reveal">Grade semanal</div>
+<h2 class="section-title reveal">HORÁRIOS <span>DE FUNCIONAMENTO</span></h2>
+<div class="schedule-grid reveal">
+<div class="day-col"><div class="day-header">Segunda</div><div class="day-items"><div class="day-item"><div class="di-time">07h–11h</div><div class="di-name">Pilates</div></div><div class="day-item"><div class="di-time">16h–19h</div><div class="di-name">Pilates</div></div><div class="day-item"><div class="di-time">18h</div><div class="di-name">Muay Thai</div></div><div class="day-item"><div class="di-time">19h</div><div class="di-name">MMA</div></div><div class="day-item"><div class="di-time">20h</div><div class="di-name">Jiu Jitsu</div></div></div></div>
+<div class="day-col"><div class="day-header">Terça</div><div class="day-items"><div class="day-item"><div class="di-time">07h–11h</div><div class="di-name">Pilates</div></div><div class="day-item"><div class="di-time">16h</div><div class="di-name">Judô</div></div><div class="day-item"><div class="di-time">19h</div><div class="di-name">Boxe</div></div></div></div>
+<div class="day-col"><div class="day-header">Quarta</div><div class="day-items"><div class="day-item"><div class="di-time">07h–11h</div><div class="di-name">Pilates</div></div><div class="day-item"><div class="di-time">16h–19h</div><div class="di-name">Pilates</div></div><div class="day-item"><div class="di-time">18h</div><div class="di-name">Muay Thai</div></div><div class="day-item"><div class="di-time">19h</div><div class="di-name">MMA</div></div><div class="day-item"><div class="di-time">20h</div><div class="di-name">Jiu Jitsu</div></div></div></div>
+<div class="day-col"><div class="day-header">Quinta</div><div class="day-items"><div class="day-item"><div class="di-time">07h–11h</div><div class="di-name">Pilates</div></div><div class="day-item"><div class="di-time">16h</div><div class="di-name">Judô</div></div><div class="day-item"><div class="di-time">19h</div><div class="di-name">Boxe</div></div></div></div>
+<div class="day-col"><div class="day-header">Sexta</div><div class="day-items"><div class="day-item"><div class="di-time">07h–11h</div><div class="di-name">Pilates</div></div><div class="day-item"><div class="di-time">16h–19h</div><div class="di-name">Pilates</div></div><div class="day-item"><div class="di-time">16h</div><div class="di-name">Judô</div></div><div class="day-item"><div class="di-time">18h</div><div class="di-name">Muay Thai</div></div><div class="day-item"><div class="di-time">19h</div><div class="di-name">Sparring Livre</div></div><div class="day-item"><div class="di-time">20h</div><div class="di-name">Jiu Jitsu</div></div></div></div>
+<div class="day-col"><div class="day-header">Sábado</div><div class="day-items"><div class="day-item"><div class="di-time">12h</div><div class="di-name">Open Mat</div><div class="di-note">Incluso nos planos de lutas</div></div></div></div>
+</div>
+</div>
+</section>
+<section class="cta-section" id="contato">
+<div class="cta-inner reveal">
+<div class="section-label" style="justify-content:center;display:flex">Vamos começar?</div>
+<h2 class="cta-title">PRONTO PARA <span>EVOLUIR?</span></h2>
+<p class="cta-desc">Entre em contato para tirar dúvidas, conhecer a estrutura ou fazer sua matrícula. Nossa equipe está pronta para ajudar você a escolher o melhor plano.</p>
+<div class="contact-chips">
+<a class="contact-chip" href="https://wa.me/5531971786860" rel="noopener" target="_blank"><span class="contact-chip-icon">💬</span><span>WhatsApp</span></a>
+<a class="contact-chip" href="https://www.instagram.com/motionlab.fl/" rel="noopener" target="_blank"><span class="contact-chip-icon">📸</span><span>Instagram</span></a>
+</div>
+<a class="btn-primary" onclick="goTo('modalidades')" style="font-size:1rem;padding:16px 48px;cursor:pointer">Ver todos os planos</a>
+<p class="cta-note">Dinheiro, Pix ou Cartão de Crédito · Planos mensais, trimestrais, semestrais e anuais</p>
+</div>
+</section>
+<footer>
+<div><div class="footer-logo">MOTION<span>.</span>LAB</div><div class="footer-copy" style="margin-top:4px">fitness &amp; lifestyle · tabela 2026</div></div>
+<div class="footer-links">
+<a onclick="goTo('diferenciais')">Diferenciais</a>
+<a onclick="goTo('modalidades')">Modalidades</a>
+<a onclick="goTo('horarios')">Horários</a>
+<a onclick="goTo('precos')">Planos</a>
+<a onclick="goTo('contato')">Contato</a>
+</div>
+</footer>
+<script>
+function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function closeMob(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open')}
+
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40));
+document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open')});
+
+let isCredit=false;
+function togglePayment(){
+  isCredit=!isCredit;
+  document.getElementById('toggleSwitch').classList.toggle('credit',isCredit);
+  document.getElementById('lbl-pix').classList.toggle('active',!isCredit);
+  document.getElementById('lbl-credit').classList.toggle('active',isCredit);
+  document.querySelectorAll('.pix-v').forEach(el=>el.style.display=isCredit?'none':'');
+  document.querySelectorAll('.credit-v').forEach(el=>el.style.display=isCredit?'':'none');
+}
+document.getElementById('toggleSwitch').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();togglePayment()}});
+
+let currentFilter='all';
+document.querySelectorAll('.mod-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    currentFilter=btn.dataset.filter;
+    document.querySelectorAll('.mod-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.plan-card').forEach(c=>c.classList.toggle('hidden',currentFilter!=='all'&&c.dataset.category!==currentFilter));
+    document.querySelectorAll('.section-divider').forEach(d=>d.style.display=(currentFilter==='all'||d.dataset.category===currentFilter)?'':'none');
+    goTo('precos');
+  });
+});
+
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){e.target.style.transitionDelay=`${(i%4)*.08}s`;e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
